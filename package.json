@@ -5,9 +5,9 @@
   "author": "Thomas Texier (@sharkone)",
   "license": "MIT",
   "homepage": "https://github.com/sharkone/scrapmagnet.js",
-  "main": "scrapmagnet.js",
+  "main": "app.js",
   "bin": {
-    "scrapmagnet": "./scrapmagnet.js"
+    "scrapmagnet": "./app.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
