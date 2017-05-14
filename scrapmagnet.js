@@ -23,6 +23,7 @@ var PRELOAD_RATIO = 0.005;
 commander
   .version('0.1.3')
   .option('-p, --port <port>', 'HTTP server port [8042]', Number, 8042)
+  .option('-i, --incoming-port <incoming>', 'BitTorrent incoming port [6881]', Number, 6881)
   .option('-k, --keep', 'Keep downloaded files upon stopping')
   .option('-i, --ppid <ppid>', 'Parent PID to monitor for auto-shutdown', Number, -1)
   .option('-a, --inactivity-pause-timeout <timeout>', 'Torrents will be paused after some inactivity', Number, 10)
@@ -181,7 +182,7 @@ function addTorrent(magnetLink, downloadDir, mixpanelData) {
 
   if (!(magnetData.infoHash in torrents)) {
     var torrent = {
-      engine:       torrentStream(magnetLink, { path: downloadDir }),
+      engine:       torrentStream(magnetLink, { path: downloadDir, port: commander.incoming }),
       dn:           magnetData.dn,
       infoHash:     magnetData.infoHash,
       mixpanelData: mixpanelData,
